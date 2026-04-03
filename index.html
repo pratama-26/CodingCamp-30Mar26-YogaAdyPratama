@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense &amp; Budget Visualizer</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Expense &amp; Budget Visualizer</h1>
+      <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙 Dark Mode</button>
+    </header>
+
+    <main>
+      <div id="total">
+        <p>Total Balance</p>
+        <p><span id="total-balance">0.00</span></p>
+      </div>
+
+      <div id="storage-warning" hidden>
+        Warning: localStorage is unavailable. Your data will not be saved between sessions.
+      </div>
+
+      <section id="form-section">
+        <form id="expense-form">
+          <input id="input-name" type="text" placeholder="Item name" />
+          <input id="input-amount" type="number" placeholder="Amount" min="0" step="0.01" />
+          <select id="input-category">
+            <option value="">Select category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Fun">Fun</option>
+          </select>
+          <button type="submit">Add</button>
+          <span id="form-error"></span>
+        </form>
+
+        <div id="custom-category-row">
+          <input id="input-new-category" type="text" placeholder="New category name" />
+          <button id="btn-add-category" type="button">+ Add Category</button>
+        </div>
+      </section>
+
+      <div id="bottom-row">
+        <section id="list-section">
+          <div id="sort-controls">
+            <label for="sort-select">Sort by:</label>
+            <select id="sort-select">
+              <option value="none">Default</option>
+              <option value="amount-asc">Amount ↑</option>
+              <option value="amount-desc">Amount ↓</option>
+              <option value="category-asc">Category A–Z</option>
+              <option value="category-desc">Category Z–A</option>
+            </select>
+          </div>
+          <p id="empty-state">No transactions yet.</p>
+          <ul id="transaction-list"></ul>
+        </section>
+
+        <section id="chart-section">
+          <canvas id="chart-canvas"></canvas>
+        </section>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
